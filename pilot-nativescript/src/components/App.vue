@@ -22,7 +22,7 @@
         isStarted: false,
         delay: null,
         time: null,
-        showResult: true,
+        showResult: false,
         msg: 'Genom att klicka på knappen startas en timer mellan 3-6 sekunder som ska klickas på så fort som möjligt',
         msg2: 'Liten testapp för att se vad som skiljer i NativeScript och Ionic utan att använda någon av mobilens funktioner'
       }
