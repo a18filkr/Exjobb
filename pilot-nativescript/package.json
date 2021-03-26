@@ -6,8 +6,9 @@
   "author": "a18filkr <a18filkr@student.his.se>",
   "license": "MIT",
   "dependencies": {
-    "nativescript-vue": "^2.8.1",
-    "@nativescript/core": "^7.0.3"
+    "@nativescript/core": "^7.0.3",
+    "nativescript-contacts": "^1.6.2",
+    "nativescript-vue": "^2.8.1"
   },
   "devDependencies": {
     "@babel/core": "^7.11.6",
