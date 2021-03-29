@@ -3,6 +3,8 @@
   <h2>Liten testapp för att se vad som skiljer i NativeScript och Ionic utan att använda någon av mobilens funktioner</h2>
   <p>Genom att klicka på knappen startas en timer mellan 3-6 sekunder som ska klickas på så fort som möjligt</p>
   <button @click="start" :disabled="isStarted">Starta timer</button>
+  <button @click="loadElements" :disabled="isStarted">Ladda element</button>
+  <Filler v-if="showFiller"></Filler>
   <Clicker v-if="isStarted" :delay="delay" @reactionTime="result"></Clicker>
   <Result v-if="showResult" :time="time"></Result>
 </template>
@@ -10,15 +12,17 @@
 <script>
 import Clicker from './components/Clicker.vue'
 import Result from './components/Result.vue'
+import Filler from './components/Filler.vue'
 export default {
   name: 'App',
-  components: { Clicker, Result },
+  components: { Clicker, Result, Filler },
   data(){
     return {
       isStarted: false,
       delay: null,
       time: null,
-      showResult: false
+      showResult: false,
+      showFiller: false
     }
   },
   methods: {
@@ -31,6 +35,9 @@ export default {
       this.time = time
       this.isStarted = false
       this.showResult = true
+    },
+    loadElements() {
+      this.showFiller = true
     }
   }
 }
