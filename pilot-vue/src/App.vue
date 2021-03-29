@@ -4,9 +4,9 @@
   <p>Genom att klicka på knappen startas en timer mellan 3-6 sekunder som ska klickas på så fort som möjligt</p>
   <button @click="start" :disabled="isStarted">Starta timer</button>
   <button @click="loadElements" :disabled="isStarted">Ladda element</button>
-  <ul v-if="showFiller">
+  <ul v-if="fillers.length">
     <!-- <li v-for="filler in fillers" :key="filler.id"></li> -->
-    <Filler v-for="filler in fillers" :key="filler.id" :id="filler.id"></Filler>
+    <Filler v-for="filler in fillers" :key="filler.id" :joke="filler.joke"></Filler>
   </ul>
   <Clicker v-if="isStarted" :delay="delay" @reactionTime="result"></Clicker>
   <Result v-if="showResult" :time="time"></Result>
@@ -25,12 +25,7 @@ export default {
       delay: null,
       time: null,
       showResult: false,
-      showFiller: false,
-      fillers: [
-        {text: 'En filler', id: 1},
-        {text: 'En filler', id: 2},
-        {text: 'En filler', id: 3}
-      ]
+      fillers: []
     }
   },
   methods: {
@@ -45,8 +40,16 @@ export default {
       this.showResult = true
     },
     loadElements() {
-      this.showFiller = true
+      fetch('http://api.icndb.com/jokes/random/25')
+      .then(resp => resp.json())
+      .then(json => {
+        this.fillers = json.value;
+        })
+      .catch(err => console.log('Error: ' + err.message))
     }
+  },
+  mounted() {
+
   }
 }
 
@@ -55,6 +58,9 @@ export default {
 <style>
 body {
   margin: 0;
+  padding: 0;
+}
+ul {
   padding: 0;
 }
 #app {

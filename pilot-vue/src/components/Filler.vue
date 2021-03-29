@@ -1,10 +1,10 @@
 <template>
-  <p>Filler: {{ id }}</p>
+  <p>{{ joke }}</p>
 </template>
 
 <script>
 export default {
-  props: ['id']
+  props: ['joke'],
 }
 </script>
 
