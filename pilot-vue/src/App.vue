@@ -4,12 +4,13 @@
   <p>Genom att klicka på knappen startas en timer mellan 3-6 sekunder som ska klickas på så fort som möjligt</p>
   <button @click="start" :disabled="isStarted">Starta timer</button>
   <button @click="loadElements" :disabled="isStarted">Ladda element</button>
+  <Clicker v-if="isStarted" :delay="delay" @reactionTime="result"></Clicker>
+  <Result v-if="showResult" :time="time"></Result>
   <ul v-if="fillers.length">
     <!-- <li v-for="filler in fillers" :key="filler.id"></li> -->
     <Filler v-for="filler in fillers" :key="filler.id" :joke="filler.joke"></Filler>
   </ul>
-  <Clicker v-if="isStarted" :delay="delay" @reactionTime="result"></Clicker>
-  <Result v-if="showResult" :time="time"></Result>
+
 </template>
 
 <script>
