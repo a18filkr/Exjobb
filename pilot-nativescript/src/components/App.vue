@@ -8,8 +8,13 @@
             <Button @tap="loadElements" :isEnabled="!isStarted" text="Ladda element" />
             <Clicker v-if="isStarted" :delay="delay" @reactionTime="result"></Clicker>
             <Result v-if="showResult" :time="time"></Result>
-            <Filler v-for="filler in fillers" :key="filler.id" :joke="filler.joke"></Filler>
+            <ScrollView height="60%">
+              <StackLayout>
+                <Filler v-for="filler in fillers" :key="filler.id" :name="filler.name"></Filler>
+              </StackLayout>
+            </ScrollView>
         </StackLayout>
+
     </Page>
 </template>
 
@@ -26,7 +31,11 @@
         delay: null,
         time: null,
         showResult: false,
-        fillers: [{ id: 72, joke: "How much wood would a woodchuck chuck if a woodchuck could Chuck Norris? All of it." }],
+        showCountries: false,
+        fillers: [
+          {name:"Sweden", id:1}, 
+          {name:"Norway", id:2}
+          ],
         msg: 'Genom att klicka på knappen startas en timer mellan 3-6 sekunder som ska klickas på så fort som möjligt',
         msg2: 'Liten testapp för att se vad som skiljer i NativeScript och Ionic utan att använda någon av mobilens funktioner'
       }
@@ -45,10 +54,17 @@
       console.log("This is the time:", this.time)
     },
     loadElements() {
-      fetch('http://api.icndb.com/jokes/random/25')
+      fetch('https://restcountries.eu/rest/v2/all')
         .then(resp => resp.json())
-        .then(json => this.fillers = json)
+        .then(json => {
+          this.fillers = json
+          this.showCountries = true
+          })
         .catch(err => console.log('Error: ' + err.message))
+    },
+    onCountryTap(country) {
+      console.log(country.index)
+      console.log(country.item)
     }
   }
 }
