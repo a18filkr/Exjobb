@@ -1,10 +1,10 @@
 <template>
-  <p>En filler</p>
+  <p>Filler: {{ id }}</p>
 </template>
 
 <script>
 export default {
-
+  props: ['id']
 }
 </script>
 

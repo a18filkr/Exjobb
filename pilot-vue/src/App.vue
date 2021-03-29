@@ -4,7 +4,10 @@
   <p>Genom att klicka på knappen startas en timer mellan 3-6 sekunder som ska klickas på så fort som möjligt</p>
   <button @click="start" :disabled="isStarted">Starta timer</button>
   <button @click="loadElements" :disabled="isStarted">Ladda element</button>
-  <Filler v-if="showFiller"></Filler>
+  <ul v-if="showFiller">
+    <!-- <li v-for="filler in fillers" :key="filler.id"></li> -->
+    <Filler v-for="filler in fillers" :key="filler.id" :id="filler.id"></Filler>
+  </ul>
   <Clicker v-if="isStarted" :delay="delay" @reactionTime="result"></Clicker>
   <Result v-if="showResult" :time="time"></Result>
 </template>
@@ -22,7 +25,12 @@ export default {
       delay: null,
       time: null,
       showResult: false,
-      showFiller: false
+      showFiller: false,
+      fillers: [
+        {text: 'En filler', id: 1},
+        {text: 'En filler', id: 2},
+        {text: 'En filler', id: 3}
+      ]
     }
   },
   methods: {
