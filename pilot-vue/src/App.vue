@@ -43,9 +43,7 @@ export default {
     loadElements() {
       fetch('http://api.icndb.com/jokes/random/25')
       .then(resp => resp.json())
-      .then(json => {
-        this.fillers = json.value;
-        })
+      .then(json => this.fillers = json.value)
       .catch(err => console.log('Error: ' + err.message))
     }
   },

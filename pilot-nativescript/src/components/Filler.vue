@@ -1,5 +1,5 @@
 <template>
-  <p>{{ joke }}</p>
+  <Label class="joke" textWrap="true">{{ joke }}</Label>
 </template>
 
 <script>
@@ -9,7 +9,7 @@ export default {
 </script>
 
 <style scoped>
-  p {
+  .joke {
     background: #2c3e50;
     color: #e65a33;
     padding: 20px;
