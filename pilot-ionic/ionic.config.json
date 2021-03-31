@@ -1,0 +1,7 @@
+{
+  "name": "pilot-ionic",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "vue"
+}
