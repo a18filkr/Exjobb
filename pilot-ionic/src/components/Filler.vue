@@ -1,10 +1,10 @@
 <template>
-  <li>{{ joke }}</li>
+  <li>{{ name }}</li>
 </template>
 
 <script>
 export default {
-  props: ['joke'],
+  props: ['name'],
 }
 </script>
 

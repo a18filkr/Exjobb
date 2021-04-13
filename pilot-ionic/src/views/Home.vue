@@ -6,12 +6,13 @@
       </ion-toolbar>
     </ion-header>
     
-    <ion-content>
+    <ion-content :fullscreen="true">
       <ion-header collapse="condense">
         <ion-toolbar>
-          <ion-title size="large">Blank</ion-title>
+          <ion-title size="large">Home</ion-title>
         </ion-toolbar>
       </ion-header>
+
       <div id="container">
           <h2>Liten testapp för att se vad som skiljer i NativeScript och Ionic utan att använda någon av mobilens funktioner</h2>
           <p>Genom att klicka på knappen startas en timer mellan 3-6 sekunder som ska klickas på så fort som möjligt</p>
@@ -24,7 +25,7 @@
             <ul v-if="fillers.length">
               <!-- <li v-for="filler in fillers" :key="filler.id"></li> -->
           
-              <Filler v-for="filler in fillers" :key="filler.id" :joke="filler.joke"></Filler>
+              <Filler v-for="filler in fillers" :key="filler.id" :name="filler.name"></Filler>
             
             </ul>
       </div>
@@ -57,7 +58,7 @@ export default defineComponent({
       delay: null,
       time: 32,
       showResult: true,
-      fillers: []
+      fillers: [{Name:'Sweden', id:1}]
     }
   },
   methods: {
@@ -72,9 +73,9 @@ export default defineComponent({
       this.showResult = true
     },
     loadElements() {
-      fetch('http://api.icndb.com/jokes/random/25')
+      fetch('https://restcountries.eu/rest/v2/all')
       .then(resp => resp.json())
-      .then(json => this.fillers = json.value)
+      .then(json => this.fillers = json)
       .catch(err => console.log('Error: ' + err.message))
     }
   },
