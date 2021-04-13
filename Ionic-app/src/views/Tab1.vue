@@ -2,7 +2,7 @@
   <ion-page>
     <ion-header>
       <ion-toolbar>
-        <ion-title>Tab 1</ion-title>
+        <ion-title>List Test</ion-title>
       </ion-toolbar>
     </ion-header>
     <ion-content :fullscreen="true">
@@ -12,17 +12,42 @@
         </ion-toolbar>
       </ion-header>
     
-      <ExploreContainer name="Tab 1 page" />
+      <ion-grid>
+        <ion-row>
+          <ion-col size="3"></ion-col>
+          <ion-col size="6">
+            <ExploreContainer name="List test" text="Skapa en lista med länder och radera igen."/>
+            <!-- <div id="container">
+              <h2>List test</h2>  
+              <p>Skapa en lista med länder och radera igen.</p>
+            </div>  -->
+          </ion-col>
+          <ion-col size="3"></ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="4"></ion-col>
+          <ion-col size="4">
+            <ion-button size="large" expand="block" @click="loadElements" :disabled="isStarted">Ladda element</ion-button>
+          </ion-col>
+          <ion-col size="4"></ion-col>
+        </ion-row>
+      </ion-grid>
+            <!-- <ul v-if="fillers.length"> -->
+              <!-- <li v-for="filler in fillers" :key="filler.id"></li> -->
+          
+              <!-- <Filler v-for="filler in fillers" :key="filler.id" :name="filler.name"></Filler> -->
+            
+            <!-- </ul> -->
     </ion-content>
   </ion-page>
 </template>
 
 <script lang="ts">
-import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent } from '@ionic/vue';
+import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonGrid, IonRow, IonButton } from '@ionic/vue';
 import ExploreContainer from '../components/ExploreContainer.vue';
 
 export default  ({
   name: 'Tab1',
-  components: { ExploreContainer, IonHeader, IonToolbar, IonTitle, IonContent, IonPage }
+  components: { ExploreContainer, IonHeader, IonToolbar, IonTitle, IonContent, IonPage, IonGrid, IonRow, IonButton }
 })
 </script>

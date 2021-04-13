@@ -1,7 +1,7 @@
 <template>
   <div id="container">
     <strong>{{ name }}</strong>
-    <p>Explore <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+    <p>{{ text }}</p>
   </div>
 </template>
 
@@ -10,7 +10,8 @@
 export default {
   name: 'ExploreContainer',
   props: {
-    name: String
+    name: String,
+    text: String
   }
 }
 </script>
@@ -18,11 +19,11 @@ export default {
 <style scoped>
 #container {
   text-align: center;
-  position: absolute;
+  /* position: absolute; */
   left: 0;
   right: 0;
-  top: 50%;
-  transform: translateY(-50%);
+  margin: 15px 0 10px 0;
+  /* transform: translateY(-10%); */
 }
 
 #container strong {
