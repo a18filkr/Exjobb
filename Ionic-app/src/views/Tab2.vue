@@ -32,10 +32,10 @@
 <script lang="ts">
 import { camera, trash, close } from 'ionicons/icons';
 import { actionSheetController, IonPage, IonHeader, IonFab, IonFabButton, IonIcon, IonToolbar, IonTitle, IonContent, IonGrid, IonRow, IonCol, IonImg } from '@ionic/vue';
-import { usePhotoGallery, Photo } from '@/composables/usePhotoGallery';
+import { usePhotoGallery, Photo } from '../composables/usePhotoGallery';
 
 
-export default  {
+export default ({
   name: 'Tab2',
   components: { IonPage, IonHeader, IonFab, IonFabButton, IonIcon, IonToolbar, IonTitle, IonContent, IonGrid, IonRow, IonCol, IonImg },
   setup() {
@@ -67,5 +67,5 @@ export default  {
       camera, trash, close
     }
   }
-}
+})
 </script>
