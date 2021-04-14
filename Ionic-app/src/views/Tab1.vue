@@ -31,6 +31,18 @@
           </ion-col>
           <ion-col size="4"></ion-col>
         </ion-row>
+        <ion-row v-if="countries.length">
+          <ion-col size="4"></ion-col>
+          <ion-col size="4">
+          <ion-list mode="md">
+            <ion-item button=true>
+              <ion-label>List item</ion-label>
+            </ion-item>
+          </ion-list>
+          </ion-col>
+          <ion-col size="4"></ion-col>
+          <Country v-for="country in countries" :key="country.id" :name="country.name" />
+        </ion-row>
       </ion-grid>
             <!-- <ul v-if="fillers.length"> -->
               <!-- <li v-for="filler in fillers" :key="filler.id"></li> -->
@@ -42,12 +54,28 @@
   </ion-page>
 </template>
 
-<script lang="ts">
-import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonGrid, IonRow, IonButton } from '@ionic/vue';
+<script>
+import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonGrid, IonRow, IonButton, IonList, IonItem, IonLabel } from '@ionic/vue';
 import ExploreContainer from '../components/ExploreContainer.vue';
+import Country from '../components/Country.vue';
 
-export default  ({
+export default ({
   name: 'Tab1',
-  components: { ExploreContainer, IonHeader, IonToolbar, IonTitle, IonContent, IonPage, IonGrid, IonRow, IonButton }
+  components: { Country, ExploreContainer, IonHeader, IonToolbar, IonTitle, IonContent, IonPage, IonGrid, IonRow, IonButton, IonList, IonItem, IonLabel },
+  data() {
+    return {
+      isStarted: "false",
+      countries: []
+    };
+  },
+  methods: {
+    loadElements() {
+      fetch('https://restcountries.eu/rest/v2/all')
+      .then(resp => resp.json())
+      .then(json => this.countries = json)
+      .catch(err => console.log('Error: ' + err.message))
+    }
+  }
 })
+
 </script>
