@@ -23,7 +23,14 @@
         <ion-row>
           <ion-col size-md="3"></ion-col>
           <ion-col size-md="6">
-            <ion-button size="large" expand="block" @click="loadElements" :disabled="isStarted">Ladda element</ion-button>
+            <ion-button size="large" expand="block" @click="loadElements" :disabled="isLoaded">Ladda lista</ion-button>
+          </ion-col>
+          <ion-col size-md="3"></ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size-md="3"></ion-col>
+          <ion-col size-md="6">
+            <ion-button size="large" expand="block" @click="deleteElements" :disabled="isDeleted">Radera lista</ion-button>
           </ion-col>
           <ion-col size-md="3"></ion-col>
         </ion-row>
@@ -52,7 +59,8 @@ export default ({
   components: { Country, ExploreContainer, IonHeader, IonToolbar, IonTitle, IonContent, IonPage, IonGrid, IonRow, IonButton, IonList, IonCol },
   data() {
     return {
-      isStarted: "false",
+      isLoaded: "false",
+      isDeleted: "true",
       countries: []
     };
   },
@@ -62,6 +70,13 @@ export default ({
       .then(resp => resp.json())
       .then(json => this.countries = json)
       .catch(err => console.log('Error: ' + err.message))
+      this.isLoaded = true
+      this.isDeleted = false
+    },
+    deleteElements() {
+      this.countries.splice(0, this.countries.length)
+      this.isLoaded = false
+      this.isDeleted = true
     }
   }
 })
