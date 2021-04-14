@@ -38,30 +38,25 @@
             <ion-item button=true>
               <ion-label>List item</ion-label>
             </ion-item>
+            <Country v-for="country in countries" :key="country.id" :name="country.name" />
           </ion-list>
           </ion-col>
           <ion-col size="4"></ion-col>
-          <Country v-for="country in countries" :key="country.id" :name="country.name" />
+
         </ion-row>
       </ion-grid>
-            <!-- <ul v-if="fillers.length"> -->
-              <!-- <li v-for="filler in fillers" :key="filler.id"></li> -->
-          
-              <!-- <Filler v-for="filler in fillers" :key="filler.id" :name="filler.name"></Filler> -->
-            
-            <!-- </ul> -->
     </ion-content>
   </ion-page>
 </template>
 
 <script>
-import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonGrid, IonRow, IonButton, IonList, IonItem, IonLabel } from '@ionic/vue';
+import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonGrid, IonRow, IonButton, IonList, IonItem, IonLabel, IonCol } from '@ionic/vue';
 import ExploreContainer from '../components/ExploreContainer.vue';
 import Country from '../components/Country.vue';
 
 export default ({
   name: 'Tab1',
-  components: { Country, ExploreContainer, IonHeader, IonToolbar, IonTitle, IonContent, IonPage, IonGrid, IonRow, IonButton, IonList, IonItem, IonLabel },
+  components: { Country, ExploreContainer, IonHeader, IonToolbar, IonTitle, IonContent, IonPage, IonGrid, IonRow, IonButton, IonList, IonItem, IonLabel, IonCol },
   data() {
     return {
       isStarted: "false",
