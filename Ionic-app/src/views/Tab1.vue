@@ -35,10 +35,7 @@
           <ion-col size="4"></ion-col>
           <ion-col size="4">
           <ion-list mode="md">
-            <ion-item button=true>
-              <ion-label>List item</ion-label>
-            </ion-item>
-            <Country v-for="country in countries" :key="country.id" :name="country.name" />
+            <Country v-for="country in countries" :key="country.id" :name="country.name" :icon="country.flag"/>
           </ion-list>
           </ion-col>
           <ion-col size="4"></ion-col>
@@ -50,13 +47,13 @@
 </template>
 
 <script>
-import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonGrid, IonRow, IonButton, IonList, IonItem, IonLabel, IonCol } from '@ionic/vue';
+import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonGrid, IonRow, IonButton, IonList, IonCol } from '@ionic/vue';
 import ExploreContainer from '../components/ExploreContainer.vue';
 import Country from '../components/Country.vue';
 
 export default ({
   name: 'Tab1',
-  components: { Country, ExploreContainer, IonHeader, IonToolbar, IonTitle, IonContent, IonPage, IonGrid, IonRow, IonButton, IonList, IonItem, IonLabel, IonCol },
+  components: { Country, ExploreContainer, IonHeader, IonToolbar, IonTitle, IonContent, IonPage, IonGrid, IonRow, IonButton, IonList, IonCol },
   data() {
     return {
       isStarted: "false",

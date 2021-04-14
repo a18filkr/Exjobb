@@ -2,17 +2,24 @@
   <ion-page>
     <ion-header>
       <ion-toolbar>
-        <ion-title>Photo Test</ion-title>
+        <ion-title>Foto Test</ion-title>
       </ion-toolbar>
     </ion-header>
     <ion-content :fullscreen="true">
       <ion-header collapse="condense">
         <ion-toolbar>
-          <ion-title size="large">Tab 2</ion-title>
+          <ion-title size="large">Foto Test</ion-title>
         </ion-toolbar>
       </ion-header>
 
-      <ion-grid>
+      <ion-grid fixed>
+        <ion-row>
+          <ion-col size="3"></ion-col>
+          <ion-col size="6">
+          <ExploreContainer name="Foto test" text="Skapar en grid med två bilder i bredd av foton som tagits med appen."/>
+          </ion-col>
+          <ion-col size="3"></ion-col>
+        </ion-row>
         <ion-row>
           <ion-col size="6" :key="photo" v-for="photo in photos">
             <ion-img :src="photo.webviewPath" @click="showActionSheet(photo)"></ion-img>
@@ -33,11 +40,12 @@
 import { camera, trash, close } from 'ionicons/icons';
 import { actionSheetController, IonPage, IonHeader, IonFab, IonFabButton, IonIcon, IonToolbar, IonTitle, IonContent, IonGrid, IonRow, IonCol, IonImg } from '@ionic/vue';
 import { usePhotoGallery, Photo } from '../composables/usePhotoGallery';
+import ExploreContainer from '../components/ExploreContainer.vue';
 
 
 export default ({
   name: 'Tab2',
-  components: { IonPage, IonHeader, IonFab, IonFabButton, IonIcon, IonToolbar, IonTitle, IonContent, IonGrid, IonRow, IonCol, IonImg },
+  components: { ExploreContainer, IonPage, IonHeader, IonFab, IonFabButton, IonIcon, IonToolbar, IonTitle, IonContent, IonGrid, IonRow, IonCol, IonImg },
   setup() {
     const { photos, takePhoto, deletePhoto } = usePhotoGallery();
     const showActionSheet = async (photo: Photo) => {
