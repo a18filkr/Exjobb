@@ -14,31 +14,27 @@
     
       <ion-grid>
         <ion-row>
-          <ion-col size="3"></ion-col>
-          <ion-col size="6">
+          <ion-col size-md="3"></ion-col>
+          <ion-col size-md="6">
             <ExploreContainer name="List test" text="Skapa en lista med länder och radera igen."/>
-            <!-- <div id="container">
-              <h2>List test</h2>  
-              <p>Skapa en lista med länder och radera igen.</p>
-            </div>  -->
           </ion-col>
-          <ion-col size="3"></ion-col>
+          <ion-col size-md="3"></ion-col>
         </ion-row>
         <ion-row>
-          <ion-col size="4"></ion-col>
-          <ion-col size="4">
+          <ion-col size-md="3"></ion-col>
+          <ion-col size-md="6">
             <ion-button size="large" expand="block" @click="loadElements" :disabled="isStarted">Ladda element</ion-button>
           </ion-col>
-          <ion-col size="4"></ion-col>
+          <ion-col size-md="3"></ion-col>
         </ion-row>
         <ion-row v-if="countries.length">
-          <ion-col size="4"></ion-col>
-          <ion-col size="4">
+          <ion-col size-md="3"></ion-col>
+          <ion-col size-md="6">
           <ion-list mode="md">
             <Country v-for="country in countries" :key="country.id" :name="country.name" :icon="country.flag"/>
           </ion-list>
           </ion-col>
-          <ion-col size="4"></ion-col>
+          <ion-col size-md="3"></ion-col>
 
         </ion-row>
       </ion-grid>
