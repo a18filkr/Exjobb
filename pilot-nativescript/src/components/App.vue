@@ -1,7 +1,7 @@
 <template>
     <Page>
         <ActionBar title="NativeScript Pilot-App"/>
-        <StackLayout>
+        <!-- <StackLayout>
             <Label class="message" :text="msg2" height="auto" textWrap="true"/>
             <Label class="message" :text="msg" height="auto" textWrap="true"/>
             <Button @tap="start" :isEnabled="!isStarted" text="Starta timer" />
@@ -13,7 +13,27 @@
                 <Filler v-for="filler in fillers" :key="filler.id" :name="filler.name"></Filler>
               </StackLayout>
             </ScrollView>
-        </StackLayout>
+        </StackLayout> -->
+
+        <TabView androidTabsPosition="bottom">
+        <TabViewItem title="Home">
+            <Frame id="items">
+                <Items/>
+            </Frame>
+        </TabViewItem>
+
+        <TabViewItem title="Browse">
+            <Frame id="browse">
+                <Browse/>
+            </Frame>
+        </TabViewItem>
+
+        <TabViewItem title="Search">
+            <Frame id="search">
+                <Search/>
+            </Frame>
+        </TabViewItem>
+    </TabView>
 
     </Page>
 </template>
@@ -22,9 +42,13 @@
   import Clicker from './Clicker.vue'
   import Result from './Result.vue'
   import Filler from './Filler.vue'
+  import Items from "./Items.vue";
+  import Browse from "./Browse.vue";
+  import Search from "./Search.vue";
+
   export default {
     name: 'App',
-    components: { Clicker, Result, Filler },
+    components: { Clicker, Result, Filler, Items, Browse, Search },
     data(){
       return {
         isStarted: false,
