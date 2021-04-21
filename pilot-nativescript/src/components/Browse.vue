@@ -5,26 +5,25 @@
         </ActionBar>
         
         <StackLayout class="page__content">
-        <AbsoluteLayout>
-          <Label 
-            text="Take Picture"
-            textWrap="true"
-            textAlignment="center"
-            left="50%"
-            top="50%"
-            width="75"
-            height="75"
-            backgroundColor="#43b883"
-            borderRadius="50"
-            @tap="takePicture" 
-          />
-        </AbsoluteLayout>
-            <ScrollView class="picture-gallery" orientation="vertical">
+
+            <ScrollView height="80%" class="picture-gallery" orientation="vertical">
               <StackLayout>
                 <Image v-for="image in arrayPictures" :src="image" class="gallery-item" stretch="aspectFit" />
               </StackLayout>
             </ScrollView>
-            
+                  
+          <Button 
+            text="Take Photo"
+            textWrap="true"
+            width="80"
+            height="80"
+            margin="5"
+            backgroundColor="#43b883"
+            borderRadius="50"
+            androidElevation="4"
+            @tap="takePicture" 
+          />
+        
         </StackLayout>
     </Page>
 </template>

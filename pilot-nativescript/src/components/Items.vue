@@ -6,12 +6,9 @@
         <StackLayout orientation="vertical">
           <Button @tap="loadElements" :isEnabled="!isLoaded" text="Ladda list" />
           <Button @tap="deleteElements" :isEnabled="!isDeleted" text="Radera Lista" />
-          <ListView for="country in countries" @itemTap="countryTap">
+          <ListView for="country in countries" @itemTap="countryTap" height="90%">
             <v-template>
-                <StackLayout orientation="horizontal">
-                    <Label :text="country.name" textWrap="true" />
-                    <Image :src="country.flag" stretch="aspectFill" width="100" height="100"/>
-                </StackLayout>
+                    <Label :text="country.name" class="label-padding"/>
             </v-template>
           </ListView>
         </StackLayout>
@@ -59,5 +56,8 @@
 
 <style scoped>
 
+.label-padding {
+  padding: 25px;
+}
 
 </style>

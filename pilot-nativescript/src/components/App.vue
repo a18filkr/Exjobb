@@ -16,19 +16,19 @@
         </StackLayout> -->
 
         <TabView androidTabsPosition="bottom">
-        <TabViewItem title="Home">
+        <TabViewItem title="List">
             <Frame id="items">
                 <Items/>
             </Frame>
         </TabViewItem>
 
-        <TabViewItem title="Browse">
+        <TabViewItem title="Camera">
             <Frame id="browse">
                 <Browse/>
             </Frame>
         </TabViewItem>
 
-        <TabViewItem title="Search">
+        <TabViewItem title="Tab3">
             <Frame id="search">
                 <Search/>
             </Frame>
