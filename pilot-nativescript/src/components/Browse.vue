@@ -29,7 +29,8 @@
 </template>
 
 <script>
-const cameraModule = require("nativescript-camera");
+import { isAvailable, requestPermissions, takePicture } from '@nativescript/camera';
+const cameraModule = require("@nativescript/camera");
   export default {
     computed: {},
     data() {
@@ -52,7 +53,7 @@ const cameraModule = require("nativescript-camera");
       }
     },
     mounted() {
-      cameraModule.requestPermissions().then(
+      requestPermissions().then(
         success => {
 
         },
