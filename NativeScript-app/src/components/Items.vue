@@ -4,8 +4,9 @@
             <Label text="List Test"></Label>
         </ActionBar>
         <StackLayout orientation="vertical">
-          <Button @tap="loadElements" :isEnabled="!isLoaded" text="Ladda list" />
-          <Button @tap="deleteElements" :isEnabled="!isDeleted" text="Radera Lista" />
+          <Label :text="message" textWrap="true" class="label-padding list-text"></Label>
+          <Button @tap="loadElements" :isEnabled="!isLoaded" text="Ladda list" padding="30"/>
+          <Button @tap="deleteElements" :isEnabled="!isDeleted" text="Radera Lista" padding="30"/>
           <ListView for="country in countries" @itemTap="countryTap" height="90%">
             <v-template>
                     <Label :text="country.name" class="label-padding"/>
@@ -26,7 +27,8 @@
           { name: "Norway", id: 2}
         ],
         isLoaded: false,
-        isDeleted: true
+        isDeleted: true,
+        message: "Skapar en lista med länder och radera igen."
       };
     },
     methods: {
@@ -58,6 +60,13 @@
 
 .label-padding {
   padding: 25px;
+}
+
+.list-text {
+  margin: 10px auto;
+  width: 580px;
+  font-size: 18px;
+  text-align: center;
 }
 
 </style>
