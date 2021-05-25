@@ -5,11 +5,15 @@
         </ActionBar>
         <StackLayout orientation="vertical">
           <Label :text="message" textWrap="true" class="label-padding list-text"></Label>
-          <Button @tap="loadElements" :isEnabled="!isLoaded" text="Ladda list" padding="30"/>
+          <Button @tap="loadCountries" :isEnabled="!isLoaded" text="Ladda länder(Webb)" padding="30"/>
+          <Button @tap="loadVaccinations" :isEnabled="!isLoaded" text="Ladda vaccin(lokal)" padding="30"/>
           <Button @tap="deleteElements" :isEnabled="!isDeleted" text="Radera Lista" padding="30"/>
-          <ListView for="country in countries" @itemTap="countryTap" height="90%">
-            <v-template>
-                    <Label :text="country.name" class="label-padding"/>
+          <ListView v-if="listobjects.length" for="object in listobjects" height="90%">
+            <v-template v-if="listobjects.length < 1000">
+              <Label :text="object.name" class="label-padding"/>
+            </v-template>
+            <v-template v-if="listobjects.length > 1000">
+              <Label :text="object.Region" class="label-padding"/>
             </v-template>
           </ListView>
         </StackLayout>
@@ -18,41 +22,55 @@
 </template>
 
 <script>
+  import json from "../assets/json/covid-vaccin.json"
 
   export default {
     data() {
       return {
-        countries: [
-          { name: "Swe", id: 1},
-          { name: "Norway", id: 2}
-        ],
+        listobjects: [],
+        vaccinations: json,
         isLoaded: false,
         isDeleted: true,
-        message: "Skapar en lista med länder och radera igen."
+        message: "Skapar en lista med länder och radera igen.",
+
       };
     },
     methods: {
-      loadElements() {
+    loadCountries() {
       fetch('https://restcountries.eu/rest/v2/all')
-        .then(resp => resp.json())
-        .then(json => {
-          this.countries = json
-          this.showCountries = true
-          })
-        .catch(err => console.log('Error: ' + err.message));
-        this.isLoaded = true;
-        this.isDeleted = false;
-      },
-      deleteElements() {
-        this.countries.splice(0, this.countries.length)
-        this.isLoaded = false;
-        this.isDeleted = true;
-      },
-      countryTap(e) {
-        console.log(this.countries[e.index].name)
-        console.log(this.countries[e.index].flag)
-      }
+      .then(resp => resp.json())
+      .then(json => this.listobjects = json)
+      .catch(err => console.log('Error: ' + err.message))
+      console.log(this.listobjects.length)
+      this.isLoaded = true
+      this.isDeleted = false
+    },
+    loadVaccinations() {
+      // console.log(json.records)
+      // fetch("json")
+      // .then(resp => resp.json())
+      // .then(json => this.listobjects = json.records)
+      // .catch(err => console.log('Error: ' + err.message))
+      this.listobjects = [...json.records]
+      console.log(this.listobjects[0].Region)
+      this.isLoaded = true
+      this.isDeleted = false
+    },
+    deleteElements() {
+      console.log(this.listobjects.length)
+      this.listobjects.splice(0, this.listobjects.length)
+      console.log(this.listobjects.length)
+      this.isLoaded = false;
+      this.isDeleted = true;
+    },
+    showRegion(e) {
+      console.log(e.item.ReportingCountry)
+    },
+    showCountry(e) {
+      console.log(e.item.name)
     }
+    },
+
   };
 </script>
 

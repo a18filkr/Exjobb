@@ -38,7 +38,6 @@
       return {
         delay: null,
         time: null,
-        showCountries: false,
         fillers: [
           {name:"Sweden", id:1}, 
           {name:"Norway", id:2}
@@ -46,18 +45,21 @@
       }
     },
   methods: {
-    loadElements() {
+    loadCountries() {
       fetch('https://restcountries.eu/rest/v2/all')
-        .then(resp => resp.json())
-        .then(json => {
-          this.fillers = json
-          this.showCountries = true
-          })
-        .catch(err => console.log('Error: ' + err.message))
+      .then(resp => resp.json())
+      .then(json => this.listobjects = json)
+      .catch(err => console.log('Error: ' + err.message))
+      this.isLoaded = true
+      this.isDeleted = false
     },
-    onCountryTap(country) {
-      console.log(country.index)
-      console.log(country.item)
+    loadVaccinations() {
+      fetch("../assets/json/covid-vaccin.json")
+      .then(resp => resp.json())
+      .then(json => this.listobjects = json.records)
+      .catch(err => console.log('Error: ' + err.message))
+      this.isLoaded = true
+      this.isDeleted = false
     }
   }
 }

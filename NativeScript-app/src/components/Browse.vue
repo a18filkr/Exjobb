@@ -8,9 +8,16 @@
 
             <ScrollView height="80%" class="picture-gallery" orientation="vertical">
               <StackLayout>
-                <Image v-for="image in arrayPictures" :src="image" class="gallery-item" stretch="aspectFit" />
+                <Image v-for="image in arrayPictures" :src="image" class="gallery-item" loadMode="async" />
               </StackLayout>
             </ScrollView>
+            <!-- <ListView height="80%">
+              <ScrollView height="80%" class="picture-gallery" orientation="vertical">
+              <StackLayout>
+                <Image v-for="image in arrayPictures" :src="image" class="gallery-item" loadMode="async" />
+              </StackLayout>
+              </ScrollView>
+            </ListView> -->
                   
           <Button 
             text="Take Photo"
